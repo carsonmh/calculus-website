@@ -9,16 +9,17 @@ function setup (){
 
 function draw (){
   background(230);
-  fill(51, 102, 138);
+  fill(10, 68, 112);
   strokeWeight(1.5);
-  stroke(150);
+  stroke(0);
   width=100;
   height=55;
   buttonPosx = size/2 - width/2;
   buttonPosy = size/2 - height/2;
   if(buttonShow === true){
-      rect(buttonPosx, buttonPosy, width, height, 15);
-    fill(150);
+      rect(buttonPosx, buttonPosy, width, height, 10);
+    fill(0);
+    strokeJoin(ROUND);
       triangle(buttonPosx + 0.43 * width, buttonPosy + 0.38 * height, buttonPosx + 0.43 * width, buttonPosy + 0.62 * height, buttonPosx + 0.57 * width, buttonPosy + 0.5 * height);
   }
   if(playAnimation === true) {
