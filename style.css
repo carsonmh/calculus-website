@@ -2,11 +2,14 @@ body {
     margin: 0;
     font-family: sans-serif;
     font-weight: 300;
-    background: white;
+    background: rgb(6, 21, 57);
+    color: white;
 }
 
 nav {
-    background: #55d6aa;
+    background: rgb(22, 40, 86);
+    position: sticky;
+    top: 0;
 }
 
 .nav-list {
@@ -24,7 +27,13 @@ nav {
 
 .nav-item a {
     text-decoration: none;
-    color:black;
+    color:white;
+    font-weight: 600;
+}
+.nav-item a:hover {
+    font-size: 100.5%;
+    opacity: 75%;
+    transition-duration: 250ms;
 }
 
 .nav-item:first-child {
@@ -50,4 +59,25 @@ canvas {
     height: 50%;
     padding: 20px;
     text-align: center;
+}
+
+a {
+    color: white;   
+    text-decoration: none;
+}
+
+.topics-item {
+    margin: 1.5em;
+    list-style-type: none;
+    font-size: 2em;
+    font-weight: 500;
+}
+
+.topics-item a:hover {
+    text-decoration: underline;
+}
+
+.topics-header{
+    text-align: center;
+    font-size: 3em;
 }

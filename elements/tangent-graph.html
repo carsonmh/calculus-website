@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Calculus</title>
+        <link rel="stylesheet" type="text/css" href="../style.css">
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"></script>
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>  
+        <script src="../env-vars.js"></script>
+    </head>
+    <body>
+        <div id="nav-placeholder">
+
+        </div>
+        <script>
+            $(function(){
+                $("#nav-placeholder").load("../inner-nav.html");
+            });
+        </script>
+            <div class="main-page">
+                <div class="element">
+                    <h1 class="element-header">Tangent Line Graph</h1>
+                    <div style="margin-top: 50px;"></div>
+                    <div class="canvas">
+                        <script src="../visualizations/tangent-graph.js"></script>
+                    </div>
+                </div>
+            </div>
+    </body>
+</html>
