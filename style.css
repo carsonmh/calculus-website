@@ -1,83 +1,80 @@
 body {
-    margin: 0;
-    font-family: sans-serif;
-    font-weight: 300;
-    background: rgb(6, 21, 57);
-    color: white;
+  margin: 0;
+  font-family: sans-serif;
+  font-weight: 300;
+  background: rgb(6, 21, 57);
+  color: white;
 }
 
 nav {
-    background: rgb(22, 40, 86);
-    position: sticky;
-    top: 0;
+  background: rgb(22, 40, 86);
+  position: sticky;
+  top: 0;
 }
 
 .nav-list {
-    display: flex;
-    margin: 0;
-    padding: 0;
-    justify-content: flex-end;
-    align-items: center;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .nav-item {
-    list-style:none;
-    margin-right: 2rem;
+  list-style: none;
+  margin-right: 2rem;
 }
 
 .nav-item a {
-    text-decoration: none;
-    color:white;
-    font-weight: 600;
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
 }
 .nav-item a:hover {
-    font-size: 100.5%;
-    opacity: 75%;
-    transition-duration: 250ms;
+  font-size: 100.5%;
+  opacity: 75%;
+  transition-duration: 250ms;
 }
 
 .nav-item:first-child {
-    margin-top: .6rem;
-    margin-right: auto;
-    margin-left: 2rem;
+  margin-top: 0.6rem;
+  margin-right: auto;
+  margin-left: 2rem;
 }
 
 .main-page {
-    margin: 3rem;
+  margin: 3rem;
 }
 
 .element-header {
-    text-align:center;
+  text-align: center;
 }
 
 canvas {
-    position: absolute;
-    left: 50%;
-    top: 65%;
-    transform: translate(-50%, -50%);
-    width: 50%;
-    height: 50%;
-    padding: 20px;
-    text-align: center;
+  position: relative;
+  padding: 20px;
+  margin: auto;
+  display: block;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
 }
 
 a {
-    color: white;   
-    text-decoration: none;
+  color: white;
+  text-decoration: none;
 }
 
 .topics-item {
-    margin: 1.5em;
-    list-style-type: none;
-    font-size: 2em;
-    font-weight: 500;
+  margin: 1.5em;
+  list-style-type: none;
+  font-size: 2em;
+  font-weight: 500;
 }
 
 .topics-item a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
-.topics-header{
-    text-align: center;
-    font-size: 3em;
+.topics-header {
+  text-align: center;
+  font-size: 3em;
 }

@@ -4,7 +4,6 @@ const bgcolor = BGCOLOR;
 const w = 800, h1 = 600;
 const f = (x) => pow(x, 3) - x;
 const f1 = (x) => 3*pow(x, 2) - 1;
-setWindow(-2, 2, -3, 3, w, h1);
 
 let back;
 let label = true;
@@ -18,6 +17,7 @@ function setup() {
     c = getColors();
     
     createCanvas(w, h1);
+    setWindow(-2, 2, -3, 3);
     background(bgcolor);
     
     // axes
@@ -99,8 +99,10 @@ function mouseClicked() {
 }
 
 function keyReleased() {
-    if(keyCode == 32) {
-        label = !label;
+    if(keyCode == 32) label = !label;
+    if(keyCode == 27) {
+        setup();
+        paused = true;
     }
 }
 

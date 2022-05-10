@@ -3,9 +3,9 @@
 
 let xmax, xmin, xstep, ymax, ymin, ystep;
 
-function setWindow(x_min, x_max, y_min, y_max, w, h) {
-    xmin = x_min, xmax = x_max, xstep = (xmax-xmin) / w;
-    ymin = y_min, ymax = y_max, ystep = (ymax-ymin) / h;
+function setWindow(x_min, x_max, y_min, y_max) {
+    xmin = x_min, xmax = x_max, xstep = (xmax-xmin) / width;
+    ymin = y_min, ymax = y_max, ystep = (ymax-ymin) / height;
 }
 
 
@@ -34,10 +34,10 @@ function drawAxes() {
 }
 
 function drawGridlines() {
-    for(let i = 0; i < ymax-ymin; i ++) {
-        line(0, i/ystep, width, i/ystep);
+    for(let i = round(ymin) - ymin; i < ymax-ymin; i ++) {
+        line(0, height - i/ystep, width, height - i/ystep);
     }
-    for(let i = 0; i < xmax-xmin; i ++) {
+    for(let i = round(xmin) - xmin; i < xmax-xmin; i ++) {
         line(i/xstep, height, i/xstep, 0);
     }
 }
@@ -107,15 +107,14 @@ function screenY(f, i) {
 // play button
 
 function playButton() {
-    bwidth = 100;
-    bheight = 55;
-    buttonPosx = (width - bwidth) / 2;
-    buttonPosy = (height - bheight) / 2;
-    fill(150);
-    strokeWeight(1.3);
-    stroke(0);
-    rect(buttonPosx, buttonPosy, bwidth, bheight, 10);
-    fill(0);
-    strokeJoin(ROUND);
-    triangle(buttonPosx + 0.43 * bwidth, buttonPosy + 0.38 * bheight, buttonPosx + 0.43 * bwidth, buttonPosy + 0.62 * bheight, buttonPosx + 0.57 * bwidth, buttonPosy + 0.5 * bheight);
+    fill(0, 180);
+    rect(0, 0, width, height);
+    const r = 40;
+    push();
+    translate(width/2 + (r / 3), height/2);
+    fill(255, 100);
+    strokeWeight(3);
+    stroke(255);
+    triangle(-r, -r, r, 0, -r, r);
+    pop();
 }
