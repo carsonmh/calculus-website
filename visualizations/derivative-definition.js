@@ -3,8 +3,7 @@ const bgcolor = BGCOLOR
 
 const w = 700, h1 = 600;
 const f = (x) => -0.15*pow(x+1, 3) + x + 1;
-const xmin = -5, xmax = 3, xstep = (xmax-xmin) / w;
-const ymin = -3, ymax = 3, ystep = (ymax-ymin) / h1;
+setWindow(-5, 3, -3, 3, w, h1);
 
 let back;
 let anim = true;
@@ -126,13 +125,3 @@ function keyReleased() {
   if(keyCode == 32) anim = !anim;
 }
 
-
-// world/screen coordinate conversions
-
-function screenToWorld(i, j) {
-  return {x: xmin + i * xstep, y: ymax - j * ystep};
-}
-
-function worldToScreen(x, y) {
-  return {i: (x - xmin) / xstep, j: (y - ymax) / -ystep};
-}
