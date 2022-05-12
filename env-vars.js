@@ -1,1 +1,1 @@
-let BGCOLOR = 'rgb(46, 65, 114)';
+let BGCOLOR = 'rgb(3, 10, 28)';

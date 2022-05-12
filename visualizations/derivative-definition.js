@@ -24,7 +24,8 @@ function setup() {
      v: color(166, 77, 120),
   };
   
-  createCanvas(w, h1);
+  canvas = createCanvas(w, h1);
+  canvas.parent('canvas-holder');
   // textAlign(CENTER, CENTER);
   background(bgcolor);
   
