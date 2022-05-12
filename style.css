@@ -73,11 +73,6 @@ a {
 .topics-item a:hover {
   text-decoration: underline;
 }
-
-.topics-header {
-  text-align: center;
-  font-size: 3em;
-}
 .topics-header{
     text-align: center;
     font-size: 3em;
