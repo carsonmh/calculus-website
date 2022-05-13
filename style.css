@@ -64,45 +64,78 @@ a {
 }
 
 .topics-item {
-  margin: 1.5em;
+  margin: 0.6em 2em;
   list-style-type: none;
-  font-size: 2em;
-  font-weight: 500;
 }
 
 .topics-item a:hover {
   text-decoration: underline;
 }
-.topics-header{
-    text-align: center;
-    font-size: 3em;
+.topics-header {
+  text-align: center;
+  font-size: 3em;
 }
 
 footer {
-    margin-bottom: 0;
-    padding: 1.5rem;
-    color: white;
+  margin-bottom: 0;
+  padding: 1.5rem;
+  color: white;
 }
 
 footer p {
-    opacity: .5;
-    display: inline-block;
-    margin-left: 1em;
-    margin-right: 1em;
+  opacity: 0.5;
+  display: inline-block;
+  margin-left: 1em;
+  margin-right: 1em;
 }
 
 footer p:hover {
-    opacity: .7;
-    color: white;
-    transition-duration: 100ms;
+  opacity: 0.7;
+  color: white;
+  transition-duration: 100ms;
 }
 
 footer p:first-child {
-    margin-left: 3em;
+  margin-left: 3em;
 }
 
 hr {
-    border: .4px solid grey;
-    width: 85%;
-    opacity: 50%;
+  border: 0.4px solid grey;
+  width: 85%;
+  opacity: 50%;
+}
+
+.topics-list {
+  list-style-type: none;
+  font-size: 2em;
+  font-weight: 500;
+}
+
+.caret {
+  cursor: pointer;
+  user-select: none; /* Prevent text selection */
+}
+
+/* Create the caret/arrow with a unicode, and style it */
+.caret::before {
+  content: "\25B6";
+  color: rgb(255, 255, 255);
+  display: inline-block;
+  margin-right: 6px;
+  transition: transform 0.1s;
+}
+
+/* Rotate the caret/arrow icon when clicked on (using JavaScript) */
+.caret-down::before {
+  transform: rotate(90deg);
+}
+
+/* Hide the nested list */
+.nested {
+  display: none;
+}
+
+/* Show the nested list when the user clicks on the caret/arrow (with JavaScript) */
+.active {
+  display: block;
 }
