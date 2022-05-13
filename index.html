@@ -8,34 +8,40 @@
         <title>Calculus</title>
         <link rel="stylesheet" type="text/css" href="style.css">
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="dropdown.js"></script>
     </head>
     <body>
-        <div id="nav-placeholder">
+        <div id="nav-placeholder"></div>
 
-        </div>
         <script>
             $(function(){
                 $("#nav-placeholder").load("nav.html");
             });
         </script>
-            <div class="main-page">
-                <div class="topics">
-                    <h1 class="topics-header">Topics</h1>
-                    <ul class="topics-list">
-                        <li class="topics-item"><a href="./topics/limits-continuity.html">Limits and Continuity</a></li>
-                        <li class="topics-item"><a href="./topics/derivatives.html">Derivatives</a></li>
-                        <li class="topics-item"><a href="#">Integrals</a></li>
-                        <li class="topics-item"><a href="#">Analyzing functions</a></li>
-                        <li class="topics-item"><a href="#">Sequences & Series</a></li>
-                        <li class="topics-item"><a href="#">Reiman Sum</a></li>
-                    </ul>
-                </div>
+
+        <div class="main-page">
+            <div class="topics">
+                <h1 class="topics-header">Topics</h1>
+                <ul class="topics-list">
+                    <li class="topics-item"><a href="./topics/limits-continuity.html">Limits and Continuity</a></li>
+                    <li><span class="caret">Derivatives</span>
+                        <ul class="nested">
+                            <li class="topics-item"><a href="./elements/derivative-definition.html">Definition of the Derivative</a>
+                            <li class="topics-item"><a href="./elements/tangent-graph.html">Slope of Tangent Line</a>
+                        </ul>
+                    </li>
+                    <li class="topics-item"><a href="#">Integrals</a></li>
+                    <li class="topics-item"><a href="#">Analyzing functions</a></li>
+                    <li class="topics-item"><a href="#">Sequences & Series</a></li>
+                    <li class="topics-item"><a href="#">Reiman Sum</a></li>
+                </ul>
             </div>
-    <div style="padding-top: 8em;"></div>
-    <hr>
-    <footer>
-        <p>Carson Harrell</p>       
-        <p><a href="mailto:thecarsonharrell@gmail.com">thecarsonharrell@gmail.com</a></p>
-      </footer>
+        </div>
+        <div style="padding-top: 8em;"></div>
+        <hr>
+        <footer>
+            <p>Carson Harrell</p>       
+            <p><a href="mailto:thecarsonharrell@gmail.com">thecarsonharrell@gmail.com</a></p>
+        </footer>
     </body>
 </html>
