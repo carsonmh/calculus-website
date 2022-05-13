@@ -64,10 +64,8 @@ a {
 }
 
 .topics-item {
-  margin: 1.5em;
+  margin: 0.6em 2em;
   list-style-type: none;
-  font-size: 2em;
-  font-weight: 500;
 }
 
 .topics-item a:hover {
@@ -109,14 +107,13 @@ hr {
 
 .topics-list {
   list-style-type: none;
+  font-size: 2em;
+  font-weight: 500;
 }
 
 .caret {
   cursor: pointer;
   user-select: none; /* Prevent text selection */
-  margin: 1.5em;
-  font-size: 2em;
-  font-weight: 500;
 }
 
 /* Create the caret/arrow with a unicode, and style it */
