@@ -2,13 +2,14 @@
 const bgcolor = BGCOLOR;
 
 const w = 800, h1 = 600;
-const f = (x) => -pow(x-4, 2) + 16;
-const maxRect = 350;
+const f = (x) => sin(x);
+let maxRect = 400;
 
 let back;
 let label = true;
 let anim = true;
 let time = 0;
+let dt = 1;
 let paused = true;
 
 
@@ -17,7 +18,7 @@ function setup() {
     c = getColors();
     
     createCanvas(w, h1);
-    setWindow(-2, 10, -2, 18);
+    setWindow(-2, 10, -2, 2);
     background(bgcolor);
     
     // axes
@@ -43,32 +44,41 @@ function setup() {
 let h = 3;
 function draw() {
     image(back, 0, 0);
-    const n = anim ? floor(time/30) + 2 : constrain(map(mouseX, 0, width, 2, maxRect), 2, maxRect);
+    const n = anim ? floor(time/30) + 2 : map(constrain(mouseX, 0, width), 0, width, 2, 400);
     const a = 0, b = 8, deltaX = (b-a) / n;
     
+    maxRect = min(width/(xmax-xmin) * (b-a), 500);
+    
     // Riemmen Sum
-    const clr = c.b;
     let area = 0;
     
-    fill(red(clr), green(clr), blue(clr), 50);
     
-    for(let i = a; i < b-0.001; i += deltaX) {
-        const tcorner = worldToScreen(i, f(i));  // top left corner of rect
-        const bcorner = worldToScreen(i, 0);     // bottom left corner of rect
+    for(let x = a; x < b-0.001; x += deltaX) {
+        const tcorner = worldToScreen(x, f(x));  // top left corner of rect
+        const bcorner = worldToScreen(x, 0);     // bottom left corner of rect
         const w = deltaX/xstep;
+        
+        const clr = f(x) >= 0 ? c.b : c.o;
+        
+        fill(red(clr), green(clr), blue(clr), 50);
         noStroke();
         rect(tcorner.i, tcorner.j, w, bcorner.j-tcorner.j);
         stroke(clr);
-        line(tcorner.i, tcorner.j, tcorner.i, bcorner.j-2);
+        line(tcorner.i, tcorner.j, tcorner.i, bcorner.j);
         line(tcorner.i, tcorner.j, tcorner.i+w, tcorner.j);
-        line(tcorner.i+w, tcorner.j, tcorner.i+w, bcorner.j-2);
+        line(tcorner.i+w, tcorner.j, tcorner.i+w, bcorner.j);
         
-        area += deltaX * f(i);
+        area += deltaX * f(x);
     }
     
     // animation
-    time ++;
-    time %= maxRect*30;
+    if(time < maxRect*30 - 60) {
+        time += dt;
+        if(n > 30 && floor(time)%30 == 0)
+            dt += 0.3;
+    } else {
+        time = maxRect*30 - 60;
+    }
     
     // labels
     if(!label) return;
