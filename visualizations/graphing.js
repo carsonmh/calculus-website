@@ -1,4 +1,8 @@
 
+//environment variables
+let BGCOLOR = 'rgb(0, 0, 20)';
+
+
 // window dimensions control
 
 let xmax, xmin, xstep, ymax, ymin, ystep;
