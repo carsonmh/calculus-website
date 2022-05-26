@@ -19,8 +19,11 @@ function preload() {
 
 
 function setup() {
-  createCanvas(800, 600, WEBGL);
-  
+  if(mobile === false){
+    createCanvas(800, 600, WEBGL);
+  }else {
+    createCanvas(windowWidth - 50, windowHeight/2, WEBGL);
+  }
   setAttributes('premultipliedAlpha', true);
   // colors
   c = getColors();
@@ -31,6 +34,9 @@ function setup() {
 let sx = 0; sy = 0; sz = 0;
 
 function draw() {
+  if(mobile) {
+    scale(0.5);
+  }
   background(BGCOLOR);
   const w = 300;
   const h = 300;

@@ -9,10 +9,21 @@ const ystep = (ymax-ymin)/sh;
 let BGCOLOR = 'rgb(0, 0, 20)';
 const S = 1;
 let d = 0;
-
+const clientWidth = window.innerWidth;
+let mobile
+if(clientWidth < 700) {
+    mobile = true;
+}else {
+    mobile = false;
+}
 
 function setup() {
-  createCanvas(sw, sh);
+  if(mobile === false){
+    createCanvas(sw, sh);
+
+  }else {
+    createCanvas(screen.width - 40, sh);
+  }
   angleMode(DEGREES);
   strokeWeight(1);
   stroke(255, 0, 0);

@@ -15,7 +15,11 @@ function preload() {
 
 
 function setup() {
-  createCanvas(800, 600, WEBGL);
+  if(mobile === false ){
+    createCanvas(800, 600, WEBGL);
+  }else {
+    createCanvas(screen.width-40, 600);
+  }
   
   setAttributes('premultipliedAlpha', true);
   // colors

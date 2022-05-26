@@ -17,7 +17,11 @@ function setup() {
     
     c = getColors();
     
-    createCanvas(w, h1);
+    if(mobile === false){
+        createCanvas(w, h1);
+    }else {
+        createCanvas(screen.width-40, h1/2);
+    }
     setWindow(-2, 10, -2, 2);
     background(bgcolor);
     

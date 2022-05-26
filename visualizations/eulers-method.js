@@ -15,8 +15,20 @@ var dx;
 var dir = -0.01;
 var rendered = false;
 
+const clientWidth = window.innerWidth;
+let mobile
+if(clientWidth < 700) {
+    mobile = true;
+}else {
+    mobile = false;
+}
+
 function setup() {
-  createCanvas(500, 500);
+  if(mobile === false){
+   createCanvas(500, 500);
+  }else {
+    createCanvas(screen.width -40, 500/2);
+  }
   stroke(255);
   noFill();
   

@@ -12,8 +12,11 @@ let paused = true;
 
 function setup() {
     c = getColors();
-    
-    createCanvas(w, h1);
+    if(mobile === false){
+        createCanvas(w, h1);
+    }else {
+        createCanvas(screen.width - 40, h1/2);
+    }
     setWindow(-0.01, 3*PI, -3, 3);
     background(BGCOLOR);
     
@@ -67,8 +70,8 @@ function draw() {
     textSize(20);
     noStroke();
     fill(255);
-    text("n: " + floor(n), width*0.25, 35);
-    text("distance: " + nround(distance, 3), width*0.6, 35);
+    text("n: " + floor(n), width*0., 35);
+    text("distance: " + nround(distance, 3), width*0.5, 35);
     
     if(paused) playButton();
 }

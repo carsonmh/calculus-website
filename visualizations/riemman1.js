@@ -16,7 +16,11 @@ function setup() {
     
     c = getColors();
     
-    createCanvas(w, h1);
+    if(mobile === false){
+        createCanvas(w, h1);
+    }else {
+        createCanvas(screen.width - 40, h1/2);
+    }
     setWindow(-2, 10, -2, 18);
     background(bgcolor);
     
@@ -76,7 +80,7 @@ function draw() {
     noStroke();
     fill(255);
     text("n: " + floor(n), width*0.25, 35);
-    text("Area: " + nround(area, 3), width*0.75, 35);
+    text("Area: " + nround(area, 3), width*0.6, 35);
 
     if(paused) playButton();
 }

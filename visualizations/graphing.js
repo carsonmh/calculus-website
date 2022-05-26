@@ -1,10 +1,15 @@
-
 //environment variables
+const clientWidth = window.innerWidth;
+let mobile
+if(clientWidth < 700) {
+    mobile = true;
+}else {
+    mobile = false;
+}
 let BGCOLOR = 'rgb(0, 0, 20)';
 
 
 // window dimensions control
-
 let xmax, xmin, xstep, ymax, ymin, ystep;
 
 function setWindow(x_min, x_max, y_min, y_max) {
@@ -13,10 +18,7 @@ function setWindow(x_min, x_max, y_min, y_max) {
 }
 
 
-
-
 // initialize graphing space (to be called in setup)
-
 function getColors() {
     return {
         r: color(204, 2, 2),
