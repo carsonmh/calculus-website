@@ -25,6 +25,12 @@ nav {
   margin-right: 2rem;
 }
 
+@media only screen and (max-width: 768px) {
+  img {
+    width: 90%;
+  }
+}
+
 .nav-item a {
   text-decoration: none;
   color: white;
@@ -35,15 +41,27 @@ nav {
   opacity: 75%;
   transition-duration: 250ms;
 }
+@media only screen and (max-width: 768px) {
+}
 
 .nav-item:first-child {
   margin-top: 0.6rem;
   margin-right: auto;
   margin-left: 2rem;
 }
+@media only screen and (max-width: 768px) {
+  .nav-item:first-child {
+    margin-left: 1rem;
+  }
+}
 
 .main-page {
   margin: 3rem;
+}
+@media only screen and (max-width: 768px) {
+  .main-page {
+    margin: 1em;
+  }
 }
 
 .element-header {
@@ -67,6 +85,14 @@ a {
   margin: 0.6em 1.2em;
   list-style-type: none;
 }
+@media only screen and (max-width: 768px) {
+  .topics-item {
+    font-size: .75em;
+    margin-bottom: 10px;
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
 
 .topics-item a:hover {
   text-decoration: underline;
@@ -75,11 +101,33 @@ a {
   text-align: center;
   font-size: 3em;
 }
+@media only screen and (max-width: 768px) {
+  .topics-header {
+    font-size: 2em;
+  }
+}
+
+.padding {
+  padding: 8em;
+}
+@media only screen and (max-width: 768px) {
+  .padding {
+    padding: 12em;
+  }
+}
 
 footer {
   margin-bottom: 0;
   padding: 1.5rem;
   color: white;
+}
+@media only screen and (max-width: 768px) {
+  footer {
+    margin-bottom: 0;
+    padding: 1.5rem;
+    color: white;
+    font-size: 12px;
+  }
 }
 
 footer p {
