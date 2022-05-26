@@ -1,83 +1,128 @@
-//env vars
-const bgcolor = BGCOLOR
+var xmin;
+var xmax;
+var ymin;
+var ymax;
+var xstep;
+var ystep;
 
-const w = 800, h1 = 600;
-const f = (x) => Math.sin(x);
-const dydx = (x, y) => Math.cos(x);
+var x0 = 0;
+var y0 = 0;
 
-let back;
-let anim = true;
-let paused = true;
+var actual;
+
+let equation = [];
+var dx;
+var dir = -0.01;
+var rendered = false;
 
 function setup() {
+  createCanvas(500, 500);
+  stroke(255);
+  noFill();
   
-    c = getColors();
-    
-    createCanvas(w, h1);
-    setWindow(-4, 4, -3, 3);
-    background(bgcolor);
-    
-    // axes
-    stroke(255, 100);
-    drawAxes();
-    
-    // grid lines
-    stroke(255, 50);
-    drawGridlines();
-    
-    // function graph
-    strokeWeight(2);
-    stroke(c.g);
-    graph(f);
-    
-    back = get(0, 0, width, height);
-    playButton();
-    noLoop();
+  xmin = 0;
+  xmax = 5;
+  ymin = 0;
+  ymax = ymin + (xmax-xmin);
+  xstep = (xmax-xmin)/width;
+  ystep = (ymax-ymin)/height;
+  
+  dx = xmax;
+  actual = 2*Math.log(xmax+1);
+  
+  calculate();
 }
 
-
-
-let h = 3;
 function draw() {
-    image(back, 0, 0);
-    noFill();
-    const n = 1;
+  
+  if(rendered) {
+    return;
+  }
+  background(0);
+  
+  text(actual,30,30);
+  plotPoints(equation);
+  
+  push();
+  stroke(0,255,255);
+  fill(255);
+  euler(x0,y0);
+  
+  pop();
 
+  if(frameCount%30) {
+    dx+=dir;
+  }
+  if(dx < 0.001) {
+    dir = 0;
+    dx = 0.001;
+  }
+  else if(dx === 0.001) {
+    rendered = true;
+  }
+}
 
-    // lines
-    for(let i = 0; i < n; i ++) {
-        
-    }
+function euler(xn,yn) {
+  if(xn >= xmax) {
+    return;
+  }
+  
+  
+  var yn2 = 2/(xn+1);
+  line(mapx(xn),mapy(yn),mapx(xn+dx),mapy(yn2*dx+yn));
+  
+  if(xn+dx >= xmax) {
+    var approx = yn+(xmax-xn)*yn2;
+    text(approx,30,60);
+  }
+  ellipse(mapx(xn),mapy(yn),5);
     
+  euler(xn+dx,yn2*dx+yn);
     
-    // labels
-    textSize(20);
-    noStroke();
-    fill(255);
-    text("dy/dx = " + round(m*1000)/1000, 200, 100);
-    fill(c.y);
-    text("h = " + round(h*1000)/1000, (p2.i+p1.i)/2-5, p1.j + 50);
+}
 
-    if(paused) playButton();
+function calculate() {
+  for(var i = 0; i < width; i++) {
+    var x = unmapx(i);
+    var y = 2*Math.log(x+1);
+    
+    equation.push(createVector(mapx(x), mapy(y)));
+  }
+}
+
+function plotPoints(p) {
+  beginShape();
+  for(var i = 0; i < p.length; i++) {
+    vertex(p[i].x,p[i].y);
+  }
+  endShape();
 }
 
 
-// user input
 
-function mouseClicked() {
-    if(paused) {
-        paused = false;
-        loop();
-    } else {
-        time = mouseX;
-        anim = !anim;
-    }
+
+function unmapx(x) {
+  var xp = xmin+xstep*x;
+  return xp;
 }
 
-function keyReleased() {
-    if(keyCode == 32) label = !label;
-    if(keyCode == 27 && paused == false) {
-        setup();
-        paused = true;
-    }
+function unmapy(y) {
+  var yp = ymax-ystep*y;
+  return yp;
+}
+
+function mapx(x) {
+  xp = (x-xmin)/xstep;
+  return xp;
+}
+
+function mapy(y) {
+  yp = (y-ymax)/(-ystep);
+  return yp;
+}
+
+keyPressed = function() {
+  if(keyCode === 32) {
+    rendered = !rendered;
+  }
 }
