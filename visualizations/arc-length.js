@@ -100,7 +100,7 @@ function keyReleased() {
 }
 
 function touchStarted(){
-    if(paused) {
+    if(paused && mobile) {
       paused = false;
       loop();
       return;

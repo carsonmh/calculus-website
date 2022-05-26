@@ -34,8 +34,8 @@ function setup() {
     graph(f);
     
     back = get(0, 0, width, height);
-    playButton();
     noLoop();
+    playButton();
 }
 
 
@@ -101,7 +101,7 @@ function keyReleased() {
 }
 
 function touchStarted(){
-    if(paused) {
+    if(paused && mobile) {
       paused = false;
       loop();
       return;

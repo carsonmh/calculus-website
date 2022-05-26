@@ -105,11 +105,3 @@ function makePolarGraph(){
   line(wts(0, 5).i, wts(0, 5).j, wts(0, -5).i, wts(0, -5).j);
   line(wts(5, 0).i, wts(5, 0).j, wts(-5, 0).i, wts(-5, 0).j);
 }
-
-function touchStarted(){
-  if(paused) {
-    paused = false;
-    loop();
-    return;
-  }
-}
