@@ -101,8 +101,17 @@ function screenY(f, i) {
     return worldToScreen(0, f(x)).j;
 }
 
+//converts r and theta to x and y coordinates
+function ptw(r, theta) {
+    return {x: (r * sin(theta)), y: (r * cos(theta))}
+}
 
-
+//converts polar coordinates to coordinates that we can use with code
+function pts(r, theta) {
+    wc = ptw(r, theta);
+    sc = worldToScreen(wc.x, wc.y);
+    return {i: sc.i, j: sc.j}
+}
 
 // play button
 
