@@ -75,6 +75,11 @@ canvas {
   display: block;
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
 }
+@media only screen and (max-width: 768px) {
+  canvas {
+    margin-left: 0;
+  }
+}
 
 a {
   color: white;
