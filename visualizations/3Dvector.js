@@ -1,5 +1,7 @@
 
 let mouseDown = false;
+let paused = true;
+
 let smx = 0;
 let yrot = 169;
 let res = 59;
@@ -22,6 +24,7 @@ function setup() {
   setAttributes('premultipliedAlpha', true);
   // colors
   c = getColors();
+  noLoop();
 }
 
 
@@ -156,28 +159,35 @@ function draw() {
   text(", ", textWidth("( " + mx + ", " + my), 0);
   text(")", tw, 0);
   pop();
+
+  push();
+  scale(0.88, 0.88, 1);
+  translate(-width*0.5, -height*0.5, 50);
+  if(paused) playButton();
+  pop();
 }
 
 
 
 function mouseClicked() {
-  mouseDown = false;
-  if(pmx != mouseX || pmy != mouseY) return;
-  sx = 0; sy = 0; sz = 0;
-  px = floor(random(6)) + 1;
-  py = floor(random(6)) + 1;
-  pz = floor(random(6)) + 1;
+    if(paused) {
+        paused = false;
+        loop();
+        return;
+    }
+    mouseDown = false;
+    if(pmx != mouseX || pmy != mouseY) return;
+    sx = 0; sy = 0; sz = 0;
+    px = floor(random(6)) + 1;
+    py = floor(random(6)) + 1;
+    pz = floor(random(6)) + 1;
 }
 
 
 
-
-function nround(x, n) {
-  const p = n || 1;
-  return round(x * pow(10, p)) / pow(10, p);
-} 
-
-
-function tintColor(c, m, a) {
-  return color( red(c)*m, green(c)*m, blue(c)*m, a || 255);
+function keyReleased() {
+    if(keyCode == 27 && paused == false) {
+        setup();
+        paused = true;
+    }
 }

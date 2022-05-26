@@ -107,7 +107,7 @@ function mouseClicked() {
 
 function keyReleased() {
     if(keyCode == 32) label = !label;
-    if(keyCode == 27) {
+    if(keyCode == 27 && paused == false) {
         setup();
         paused = true;
     }
