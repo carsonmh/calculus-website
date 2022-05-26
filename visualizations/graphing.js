@@ -88,6 +88,11 @@ function dash(x1, y1, x2, y2) {
 }
 
 
+function tintColor(c, m, a) {
+    return color( red(c)*m, green(c)*m, blue(c)*m, a || 255);
+}
+
+
 
 
 // world/screen coordinate conversions
@@ -105,13 +110,11 @@ function screenY(f, i) {
     return worldToScreen(0, f(x)).j;
 }
 
-//converts r and theta to x and y coordinates
-function ptw(r, theta) {
+function ptw(r, theta) {    //converts r and theta to x and y coordinates
     return {x: (r * sin(theta)), y: (r * cos(theta))}
 }
 
-//converts polar coordinates to coordinates that we can use with code
-function pts(r, theta) {
+function pts(r, theta) {     //converts polar coordinates to coordinates that we can use with code
     wc = ptw(r, theta);
     sc = worldToScreen(wc.x, wc.y);
     return {i: sc.i, j: sc.j}
