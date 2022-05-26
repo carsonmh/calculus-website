@@ -110,3 +110,10 @@ function keyReleased() {
     }
 }
 
+function touchStarted(){
+    if(paused) {
+      paused = false;
+      loop();
+      return;
+    }
+  }

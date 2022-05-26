@@ -138,3 +138,11 @@ keyPressed = function() {
     rendered = !rendered;
   }
 }
+
+function touchStarted(){
+  if(paused) {
+    paused = false;
+    loop();
+    return;
+  }
+}

@@ -188,3 +188,11 @@ function keyReleased() {
 function mouseClicked() {
   mouseDown = false;
 }
+
+function touchStarted(){
+  if(paused) {
+    paused = false;
+    loop();
+    return;
+  }
+}

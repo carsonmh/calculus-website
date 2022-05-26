@@ -99,3 +99,11 @@ function keyReleased() {
         paused = true;
     }
 }
+
+function touchStarted(){
+    if(paused) {
+      paused = false;
+      loop();
+      return;
+    }
+  }
