@@ -189,6 +189,14 @@ function mouseClicked() {
     pz = floor(random(6)) + 1;
 }
 
+function touchStarted(){
+  if(paused) {
+    paused = false;
+    loop();
+    return;
+  }
+}
+
 
 
 function keyReleased() {
