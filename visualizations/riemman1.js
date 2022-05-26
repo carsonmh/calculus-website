@@ -25,7 +25,7 @@ function setup() {
     drawAxes();
     
     // grid lines
-    stroke(255, 50);
+    stroke(255, 30);
     drawGridlines();
     
     // function graph
