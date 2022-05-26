@@ -1,4 +1,4 @@
-const w = 600, h1 = 450;
+const w = 800, h1 = 600;
 const f = (x) => sin(x);
 const f1 = (x) => cos(x);
 
