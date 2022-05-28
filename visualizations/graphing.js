@@ -48,8 +48,22 @@ function drawGridlines() {
     }
 }
 
-
-
+function makePolarGraph(){
+    //makes the layout for the polar graph
+    background(BGCOLOR);
+    noFill();
+    stroke(255, 50);
+    strokeWeight(1);
+    circle(wts(0, 0).i, wts(0, 0).j, (1 * (2/xstep)));
+    circle(wts(0, 0).i, wts(0, 0).j, (2 * (2/xstep)));
+    circle(wts(0, 0).i, wts(0, 0).j, (3 * (2/xstep)));
+    circle(wts(0, 0).i, wts(0, 0).j, (4 * (2/xstep)));
+    circle(wts(0, 0).i, wts(0, 0).j, (5 * (2/xstep)));
+    strokeWeight(2);
+    stroke(150, 75);
+    line(wts(0, 5).i, wts(0, 5).j, wts(0, -5).i, wts(0, -5).j);
+    line(wts(5, 0).i, wts(5, 0).j, wts(-5, 0).i, wts(-5, 0).j);
+}
 
 // utilities
 
@@ -106,6 +120,9 @@ function screenToWorld(i, j) {
 function worldToScreen(x, y) {
     return {i: (x - xmin) / xstep, j: (y - ymax) / -ystep};
 }
+function wts(x, y) {
+    return {i: (x - xmin) / xstep, j: (y - ymax) / -ystep};
+}  
 
 function screenY(f, i) {
     const x = screenToWorld(i, 0).x;
@@ -136,3 +153,4 @@ function playButton() {
     triangle(-r, -r, r, 0, -r, r);
     pop();
 }
+  
