@@ -1,21 +1,15 @@
-const xmin = -2.5;
-const xmax = 2.5;
-const ymin = -2.5;
-const ymax = 2.5;
-const sw = 400;
-const sh = 400;
-const xstep = (xmax-xmin)/sw;
-const ystep = (ymax-ymin)/sh;
-let BGCOLOR = 'rgb(0, 0, 20)';
+xmin = -2.5;
+xmax = 2.5;
+ymin = -2.5;
+ymax = 2.5;
+sw = 400;
+sh = 400;
+xstep = (xmax-xmin)/sw;
+ystep = (ymax-ymin)/sh;
 const S = 1;
 let d = 0;
-const clientWidth = window.innerWidth;
-let mobile
-if(clientWidth < 700) {
-    mobile = true;
-}else {
-    mobile = false;
-}
+const clientWidth1 = window.innerWidth;
+let paused = true;
 
 function setup() {
   if(mobile === false){
@@ -28,6 +22,8 @@ function setup() {
   strokeWeight(1);
   stroke(255, 0, 0);
   c = getColors();
+  playButton();
+  noLoop();
 }
 
 function draw() {
@@ -55,53 +51,20 @@ function draw() {
   if(d >= 360) {
     d = 0;
   }
+  if(paused) playButton();
 }
 
-
-//converts polar coordinates to coordinates that we can use with code
-function pts(r, theta) {
-  wc = ptw(r, theta);
-  sc = wts(wc.x, wc.y);
-  return {i: sc.i, j: sc.j}
+function mouseClicked() {
+  if(paused) {
+      paused = false;
+      loop();
+  }
 }
 
-//converts x and y to code coordinates
-function wts(x, y) {
-  return {i: (x - xmin) / xstep, j: (y - ymax) / -ystep};
-}
-
-//converts r and theta to x and y coordinates
-function ptw(r, theta) {
-  return {x: (r * sin(theta)), y: (r * cos(theta))}
-}
-
-function getColors() {
-    return {
-        r: color(204, 2, 2),
-        o: color(230, 146, 56),
-        y: color(241, 194, 49),
-        g: color(105, 168, 79),
-        c: color(69, 130, 141),
-        b: color(62, 132, 198),
-        i: color(102, 78, 167),
-        v: color(166, 77, 120),
+  function touchStarted(){
+    if(paused && mobile) {
+      paused = false;
+      loop();
+      return;
     }
-}
-
-
-//makes the layout for the polar graph
-function makePolarGraph(){
-  background(BGCOLOR);
-  noFill();
-  stroke(255, 50);
-  strokeWeight(1);
-  circle(wts(0, 0).i, wts(0, 0).j, (1 * (2/xstep)));
-  circle(wts(0, 0).i, wts(0, 0).j, (2 * (2/xstep)));
-  circle(wts(0, 0).i, wts(0, 0).j, (3 * (2/xstep)));
-  circle(wts(0, 0).i, wts(0, 0).j, (4 * (2/xstep)));
-  circle(wts(0, 0).i, wts(0, 0).j, (5 * (2/xstep)));
-  strokeWeight(2);
-  stroke(150, 75);
-  line(wts(0, 5).i, wts(0, 5).j, wts(0, -5).i, wts(0, -5).j);
-  line(wts(5, 0).i, wts(5, 0).j, wts(-5, 0).i, wts(-5, 0).j);
-}
+  }

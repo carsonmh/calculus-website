@@ -41,8 +41,6 @@ nav {
   opacity: 75%;
   transition-duration: 250ms;
 }
-@media only screen and (max-width: 768px) {
-}
 
 .nav-item:first-child {
   margin-top: 0.6rem;
