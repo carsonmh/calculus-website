@@ -6,6 +6,7 @@
         <title>Log in</title>
         <link rel="stylesheet" type="text/css" href="style.css">
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+        <script type="module" src="src/index.js"></script>
     </head>
     <body>
         <div id="nav-placeholder">
@@ -19,7 +20,9 @@
             <div class="main-page">
                 <div class="log-in">
                     <form>
-                        Username: <input type="text" required name="name">
+                        Email: <input type="email" required id="txtEmail"><br>
+                        Password: <input type="password" required id="txtPassword"><br>
+                       <button id="btnLogin" type="button">Log in</button>
                     </form>
                 </div>
             </div>

@@ -105,4 +105,4 @@ function touchStarted(){
       loop();
       return;
     }
-  }
+}
