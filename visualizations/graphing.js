@@ -83,6 +83,30 @@ function graph(f, res, start, end, clr) {
     return {i: pi, j: pj};
 }
 
+function slopeField(dydx, xres, yres, len, clr) {
+    const deltaX = (xmax - xmin) / xres;
+    const deltaY = (ymax - ymin) / yres;
+    for(let x = xmin; x < xmax; x += deltaX) {
+      for(let y = ymin; y < ymax; y += deltaY) {
+        const m = dydx(x, y);
+        const p1 = worldToScreen(x, y);
+        const tanline = (xi) => m*(xi-x) + y;
+        const p2 = worldToScreen(x+len, tanline(x+len));
+        const d = createVector(p2.i-p1.i, p2.j-p1.j).normalize();
+        
+        push();
+        translate(p1.i, p1.j);
+        if(clr) clr(m);
+        line(0, 0, d.x*len, d.y*len);
+        translate(d.x*len, d.y*len);
+        rotate(atan2(d.y*len, d.x*len));
+        line(0, 0, -2, 2);
+        line(0, 0, -2, -2);
+        pop();
+      }    
+    }
+  }
+
 function nround(x, n) {
     const p = n || 1;
     return round(x * pow(10, p)) / pow(10, p);
